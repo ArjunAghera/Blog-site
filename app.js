@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -13,10 +14,10 @@ const contactContent =
 
 const app = express();
 
-mongoose.connect(
-  "mongodb+srv://admin-arjun:Incorrect@cluster0.kqrwt.mongodb.net/blogSiteDB",
-  { useUnifiedTopology: true, useNewUrlParser: true }
-);
+mongoose.connect(process.env.DB_URL, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 
 const postSchema = {
   title: String,
